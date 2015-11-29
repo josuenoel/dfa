@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html ng-app="dfa">
+	<head>
+		<title>DFA Simulador</title>
+		<link rel="stylesheet" type="text/css" href="recursos/css/dfa.css">
+		<script type="text/javascript" src="recursos/js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="recursos/js/angular.min.js"></script>
+		<script type="text/javascript" src="recursos/js/dfa.js"></script>
+	</head>
+	<body>
+
+		<div id="app-wrapper" ng-controller="dfaController as dfa">
+			<div id="titulo">DFA</div>
+
+			<div id="formulario">
+
+				<form>
+					Ingrese los estados separados por comas:
+					<input type="text" ng-model="dfa.inputEstados" ng-change="dfa.parsearEstados()" >
+					Ingrese el Alfabeto separando los símbolos con comas:
+					<input type="text" ng-model="dfa.inputAlfabeto" ng-change="dfa.parsearAlfabeto()" ><br><br>
+					Cadena: <input type="text" ng-model="dfa.cadena">
+					Estado Inicial:
+					<select ng-model="dfa.estadoInicial">
+						<option ng-repeat="(key, estado) in dfa.estados">{{key}}</option>
+					</select><br>
+				</form>
+
+				<div class="datagrid">
+					<table>
+						<thead>
+							<tr>
+								<th>Nombre de Estado</th> 
+								<th>¿Es Estado Final?</th>
+								<th ng-repeat="simbolo in dfa.alfabeto track by $index">{{simbolo}}</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="(key, estado) in dfa.estados track by $index">
+								<td>{{key}}</td>
+								<td><input type="checkbox" ng-model="estado.estadoFinal"></td>
+								<td ng-repeat="simbolo in dfa.alfabeto track by $index">
+									<select ng-model="estado.caminos[dfa.alfabeto[$index]]">
+										<option ng-repeat="(key, estado) in dfa.estados">{{key}}</option>
+									</select>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div id="grafo">
+					
+				</div>
+
+				<br><br><br>
+
+				<p id="cadena">{{dfa.cadena}}</p>
+				<p id="resultado">Resultado: 
+					<span ng-if="dfa.resultado == 1" class="resultado" style="color: orange">Consumiendo Cadena</span>
+					<span ng-if="dfa.resultado == 2" class="resultado" style="color: green">Cadena Aceptada</span>
+					<span ng-if="dfa.resultado == 3" class="resultado" style="color: red">Cadena Rechazada</span>
+					<span ng-if="dfa.resultado == 4" class="resultado" style="color: red">Símbolo No Reconocido</span>
+				</p>
+				<div id="wrapper-boton-consumir-cadena">
+					<button ng-if="dfa.resultado == undefined || dfa.resultado == 1"ng-click="dfa.consumirCadena()">Consumir Cadena</button>
+					<button ng-if="dfa.resultado == 2 || dfa.resultado == 3 || dfa.resultado == 4" ng-click="dfa.reiniciar()">Nuevo DFA</button>
+				</div>
+
+			</div>
+
+		</div>
+
+	</body>
+</html>
