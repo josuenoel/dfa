@@ -4,7 +4,7 @@ body {
 
 #titulo {
 	text-align: center;
-	margin: 80px;
+	margin: 30px;
 	font-size: xx-large;
 	font-weight: bold;
 }
@@ -36,7 +36,7 @@ table {
 
 
 .datagrid {
-	margin-top: 50px;
+	margin-top: 30px;
 }
 
 
@@ -107,4 +107,21 @@ tr:nth-child(even) {
 .resultado {
 	font-weight: bold;
 	font-size: large;
+}
+
+.nodo-grafo {
+	width: 60px;
+	    height: 60px;
+	    border-radius: 50%;
+	    background-color: lightseagreen;
+	    text-align: center;
+	        display: table-cell;
+    vertical-align: middle;
+}
+
+
+#grafo {
+    width: 600px;
+    height: 400px;
+	margin-left: calc(50% - 300px);
 }
