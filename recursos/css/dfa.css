@@ -2,6 +2,7 @@ body {
 	font-family: sans-serif;
 }
 
+
 #titulo {
 	text-align: center;
 	margin: 30px;
@@ -9,21 +10,26 @@ body {
 	font-weight: bold;
 }
 
+
 #formulario {
 	margin: 80px;
 }
+
 
 form input {
 	margin-right: 60px;
 }
 
+
 table {
 	margin: 0 auto;
 }
 
+
 #tabla-rutas {
 	margin-top: 50px;
 }
+
 
 #tabla-rutas tr th {
 	background-color: #006699;
@@ -46,6 +52,7 @@ table {
 	width: 100%;
 }
 
+
 .datagrid {
 	font: normal 12px/150% Arial, Helvetica, sans-serif; background: #fff;
 	overflow: hidden;
@@ -55,9 +62,11 @@ table {
 	border-radius: 3px;
 }
 
+
 .datagrid table td, .datagrid table th {
 	padding: 3px 10px;
 }
+
 
 .datagrid table thead th {
 	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );
@@ -70,9 +79,11 @@ table {
 	border-left: 1px solid #0070A8;
 }
 
+
 .datagrid table thead th:first-child {
 	border: none;
 }
+
 
 .datagrid table tbody td {
 	color: #00557F;
@@ -81,18 +92,22 @@ table {
 	font-weight: normal;
 }
 
+
 .datagrid table tbody td:first-child {
 	border-left: none;
 }
+
 
 .datagrid table tbody tr:last-child td {
 	border-bottom: none;
 }
 
+
 tr:nth-child(even) {
 	background: #E1EEf4;
 	color: #00557F;
 }
+
 
 #cadena {
 	text-align: center;
@@ -100,14 +115,17 @@ tr:nth-child(even) {
 	color: #228b22;
 }
 
+
 #wrapper-boton-consumir-cadena, #resultado {
 	text-align: center;
 }
+
 
 .resultado {
 	font-weight: bold;
 	font-size: large;
 }
+
 
 .nodo-grafo {
 	width: 60px;

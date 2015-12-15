@@ -1,5 +1,6 @@
 angular.module('dfa', []).controller('dfaController', function() {
 
+	// Inicializar Variables
 	var dfa = this;
 	dfa.inputEstados = "";
 	dfa.inputAlfabeto = "";
@@ -9,6 +10,7 @@ angular.module('dfa', []).controller('dfaController', function() {
 	dfa.estadoInicial = {};
 
 
+	// Funcion llamada por eventos, toma los estados ingresados por el usuario y los incorpora al DFA
 	dfa.parsearEstados = function(){
 		dfa.estados = {};
 		dfa.estados.inicio = {
@@ -25,11 +27,13 @@ angular.module('dfa', []).controller('dfaController', function() {
 	}
 
 
+	// Funcion llamada por eventos, toma el alfabeto ingresado por el usuario y lo incorpora al DFA
 	dfa.parsearAlfabeto = function(){
 		dfa.alfabeto = dfa.inputAlfabeto.split(",");
 	}
 
 
+	// Funcion llamada por el boton, consume un simbolo de la cadena en cada llamado y actualiza el estado actual.
 	dfa.consumirCadena = function(){
 		dfa.resultado = 1;
 		if (!dfa.estadoActual){
@@ -56,6 +60,8 @@ angular.module('dfa', []).controller('dfaController', function() {
 	}
 
 
+	// Genera un nuevo grafo actualizado cada vez que se llama.
+	// Para generar el grafo se utiliza vis.js, para más información visitar: http://visjs.org/docs/network/
 	dfa.actualizarGrafo = function(){
 		var nodesData = [];
 		$.each(dfa.estados, function(key, value) {

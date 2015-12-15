@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <html ng-app="dfa">
+
 	<head>
 		<title>DFA Simulador</title>
+		<!--	Importar Estilos	-->
 		<link rel="stylesheet" type="text/css" href="recursos/css/dfa.css">
 		<link rel="stylesheet" type="text/css" href="recursos/css/vis.css">
+		<!--	Importar Librerias y Controlador	-->
 		<script type="text/javascript" src="recursos/js/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="recursos/js/angular.min.js"></script>
 		<script type="text/javascript" src="recursos/js/dfa.js"></script>
 		<script type="text/javascript" src="recursos/js/vis.js"></script>
 	</head>
+
 	<body>
 
 		<div id="app-wrapper" ng-controller="dfaController as dfa">
 			<div id="titulo">DFA</div>
 
+			<!--	Recopilacion de Datos Necesarios para Generar el DFA	-->
 			<div id="formulario">
 
 				<form>
@@ -52,17 +57,21 @@
 					</table>
 				</div>
 
-				<div id="grafo"></div>
+				<!--	Div que contiene el grafo del DFA	-->
+				<div id="grafo"></div><br>
 
-				<br>
-
+				<!--	Mostrar el estado actual de la cadena	-->
 				<p id="cadena">{{dfa.cadena}}</p>
+
+				<!--	Mostrar el resultado actual del DFA	-->
 				<p id="resultado">Resultado: 
 					<span ng-if="dfa.resultado == 1" class="resultado" style="color: orange">Consumiendo Cadena</span>
 					<span ng-if="dfa.resultado == 2" class="resultado" style="color: green">Cadena Aceptada</span>
 					<span ng-if="dfa.resultado == 3" class="resultado" style="color: red">Cadena Rechazada</span>
 					<span ng-if="dfa.resultado == 4" class="resultado" style="color: red">Símbolo No Reconocido</span>
 				</p>
+
+				<!--	Boton para comanzar a ejecutar el DFA	-->
 				<div id="wrapper-boton-consumir-cadena">
 					<button ng-if="dfa.resultado == undefined || dfa.resultado == 1" ng-click="dfa.consumirCadena()">Consumir Cadena</button>
 					<button ng-if="dfa.resultado == 2 || dfa.resultado == 3 || dfa.resultado == 4" ng-click="dfa.reiniciar()">Nuevo DFA</button>
